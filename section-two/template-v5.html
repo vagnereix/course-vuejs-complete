@@ -1,0 +1,29 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+  <!-- v-once faz com que o Vue deixa de monitorar mudança no conteúdo e rerenderizar -->
+  <p v-once>{{ titulo }}</p>
+
+  <!-- executando função direto no template -->
+  <p>{{ saudacao() }}</p>
+
+  <!-- v-bind faz a ligação entre o que está na instância do Vue e um atributo de tag no template -->
+  <a v-bind:href="link">Google</a>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      titulo: 'Usando VueJS 2!',
+      link: 'https://google.com.br',
+    },
+    methods: {
+      saudacao: function () {
+        // utilizando this para acessar instâncias internas do VueJS
+        this.titulo = 'Usando Vue.';
+        return this.titulo;
+      },
+    },
+  });
+</script>

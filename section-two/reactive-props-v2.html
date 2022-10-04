@@ -1,0 +1,42 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+  <button v-on:click="aumentar">Aumentar</button>
+  <button v-on:click="aumentar2">Aumentar 2</button>
+
+  <p>Contador: {{ contador }}</p>
+  <p>Contador 2: {{ contador2 }}</p>
+
+  <!-- propriedades computadas são chamdas como variáveis normais e não como métodos, mesmo sendo -->
+  <p>Resultado Contador: {{ resultado }}</p>
+  <p>Resultado Contador 2: {{ resultado2() }}</p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      contador: 0,
+      contador2: 0,
+    },
+    // funções dentro de computed só serão executadas quando algo utilizado por elas mudar
+    computed: {
+      resultado() {
+        console.log('Result computed called');
+        return this.contador >= 5 ? 'Maior ou igual a 5' : 'Menor que 5';
+      },
+    },
+    methods: {
+      aumentar: function () {
+        this.contador++;
+      },
+      aumentar2: function () {
+        this.contador2++;
+      },
+      resultado2() {
+        console.log('Result 2 called');
+        return this.contador2 >= 5 ? 'Maior ou igual a 5' : 'Menor que 5';
+      },
+    },
+  });
+</script>
