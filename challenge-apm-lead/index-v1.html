@@ -1,0 +1,107 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(guy, index) in people" :key="guy.age">
+        <td v-for="prop in guy">{{ prop }}</td>
+        <td>
+          <button @click="startEditGuy(index)">Edit</button>
+          <button @click="deleteGuy(index)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div v-if="isEditing">
+    <input type="text" placeholder="Digite seu nome" v-model="editGuy.name" />
+    <input type="text" placeholder="Digite sua idade" v-model="editGuy.age" />
+
+    <button type="submit" @click="saveEditedGuy">Register</button>
+  </div>
+
+  <div>
+    <input type="text" placeholder="Digite seu nome" v-model="newGuy.name" />
+    <input type="text" placeholder="Digite sua idade" v-model="newGuy.age" />
+
+    <button type="submit" @click="createGuy">Register</button>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      isEditing: false,
+      editGuy: {
+        name: '',
+        age: '',
+      },
+      newGuy: {
+        name: '',
+        age: '',
+      },
+      people: [
+        {
+          name: 'Maria',
+          age: 27,
+        },
+        {
+          name: 'José',
+          age: 18,
+        },
+        {
+          name: 'Ana',
+          age: 24,
+        },
+      ],
+    },
+    methods: {
+      createGuy() {
+        this.people = [...this.people, this.newGuy];
+        this.newGuy = {};
+      },
+      deleteGuy(guyIndex) {
+        this.people.splice(guyIndex, 1);
+      },
+      startEditGuy(guyIndex) {
+        this.editGuy = this.people[guyIndex];
+        this.isEditing = true;
+      },
+      saveEditedGuy(guyIndex) {
+        this.people[guyIndex] = this.editGuy;
+        this.isEditing = false;
+      },
+    },
+  });
+</script>
+
+<style>
+  #app {
+    height: 100vh;
+
+    display: flex;
+    gap: 32px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family: sans-serif;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  tbody {
+    text-align: center;
+  }
+</style>
