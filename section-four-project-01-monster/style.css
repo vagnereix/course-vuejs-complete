@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+html {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1a202c;
+  color: #fff;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  width: 80%;
+  max-width: 1120px;
+  margin: 16px auto;
+  padding: 16px;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.25);
+}
+
+.scores {
+  text-align: center;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.score span {
+  margin-right: 12px;
+}
+
+.danger {
+}
+
+.results {
+  text-align: center;
+}
+
+.win {
+  color: green;
+}
+
+.lose {
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+.attack {
+  background-color: red;
+}
+
+.special-attack {
+  background-color: orange;
+}
+
+.heal {
+  background-color: green;
+}
+
+.give-up {
+  background-color: #eee1ff;
+  color: #1a202c;
+}
+
+.start-game {
+  background-color: blue;
+}
+
+.logs ul {
+  padding: 0 16px;
+
+  list-style: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.logs ul li {
+  padding: 8px 0;
+  border-radius: 3px;
+}
+
+.logs li + li {
+  margin-top: 12px;
+}
+
+.logs ul li.monster {
+  background-color: red;
+}
+
+.logs ul li.player {
+  background-color: green;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Monster Killer</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="panel scores">
+        <div class="score">
+          <h2>Player</h2>
+          <span>{{ playerLife }}%</span>
+          <progress
+            :class="{ danger: playerLife < 20 }"
+            :value="playerLife"
+            max="100"
+          />
+        </div>
+        <div class="score">
+          <h2>Monster</h2>
+          <span>{{ monsterLife }}%</span>
+          <progress
+            :class="{ danger: monsterLife < 20 }"
+            :value="monsterLife"
+            max="100"
+          />
+        </div>
+      </div>
+
+      <div v-if="hasResult" class="panel results">
+        <div v-if="monsterLife === 0" class="win">
+          <h3>You win!</h3>
+        </div>
+        <div v-else class="lose">
+          <h3>You lose!</h3>
+        </div>
+      </div>
+
+      <div class="panel buttons">
+        <button
+          v-if="hasResult || !gameStarted"
+          @click="startGame"
+          type="button"
+          class="btn start-game"
+        >
+          Start Game
+        </button>
+
+        <template v-else>
+          <button @click="attack(false)" type="button" class="btn attack">
+            Attack
+          </button>
+          <button
+            @click="attack(true)"
+            type="button"
+            class="btn special-attack"
+          >
+            Special Attack
+          </button>
+          <button @click="healAndHurt" type="button" class="btn heal">
+            Heal
+          </button>
+          <button @click="giveUp" type="button" class="btn give-up">
+            Give Up
+          </button>
+        </template>
+      </div>
+
+      <div v-if="logs.length" class="panel logs">
+        <ul>
+          <li :class="log.cls" v-for="log in logs">{{ log.text }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
