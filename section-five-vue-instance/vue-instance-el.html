@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      {{ title }} <button @click="change">Change title</button>
+    </div>
+
+    <script>
+      const vueInstance = new Vue({
+        el: '#app',
+        data: {
+          title: 'First title',
+        },
+        methods: {
+          change() {
+            this.title += '!';
+          },
+        },
+      });
+
+      console.log(vueInstance);
+    </script>
+  </body>
+</html>

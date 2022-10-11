@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>{{ title }}</h1>
+      <button @click="title += '!'">Change title</button>
+      <button @click="$destroy()">Destroy</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          title: 'Welcome',
+        },
+        // métodos padrões do Vue chamados fora de methods
+        beforeCreate() {
+          console.log('Before create');
+        },
+        created() {
+          console.log('Created');
+        },
+        beforeMount() {
+          console.log('Before mount DOM');
+        },
+        mounted() {
+          console.log('DOM mounted');
+        },
+        beforeUpdate() {
+          console.log('Before update some change');
+        },
+        updated() {
+          console.log('Some change updated');
+        },
+        beforeDestroy() {
+          console.log('Before destroy Vue instance');
+        },
+        destroyed() {
+          console.log('Vue instance destroyed');
+        },
+      });
+    </script>
+  </body>
+</html>
