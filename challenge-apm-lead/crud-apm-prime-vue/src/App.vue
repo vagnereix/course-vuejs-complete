@@ -121,7 +121,6 @@ export default {
         } else {
           this.product.id = this.createId();
           this.product.code = this.createId();
-          this.product.image = 'product-placeholder.svg';
           this.product.inventoryStatus = this.product.inventoryStatus
             ? this.product.inventoryStatus.value
             : 'INSTOCK';
@@ -215,7 +214,6 @@ export default {
 .table-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   @media screen and (max-width: 960px) {
     align-items: start;
